@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Baku, Be My Valentine ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff4e8a, #ffb347, #ff6f91);
+            font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 25px;
+            padding: 30px;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.3em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.15em;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            font-size: 1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn {
+            background: #00ffb3;
+            color: #000;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        #noBtn {
+            background: #ff1744;
+            color: #fff;
+            position: absolute;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 1.25em;
+            font-weight: bold;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            font-size: 22px;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.85;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Music -->
+    <audio id="loveMusic" loop>
+        <!-- Free romantic music (royalty-free) -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_45b4bdb0ef.mp3?filename=romantic-piano-112191.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="card">
+        <h1>Hey Dharti 💖</h1>
+        <p>
+            But let’s be honest…<br>
+            You’re not just Dharti 🌍<br>
+            You’re my **Baku 😘**<br><br>
+
+            Roses are red 🌹<br>
+            Chocolates are sweet 🍫<br>
+            Life is way more fun<br>
+            When my Baku is next to me 💕
+        </p>
+
+        <button id="yesBtn">YES, I’m yours ❤️</button>
+        <button id="noBtn">No 🙈</button>
+
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const message = document.getElementById("message");
+        const music = document.getElementById("loveMusic");
+
+        noBtn.addEventListener("mouseover", () => {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        });
+
+        yesBtn.addEventListener("click", () => {
+            music.play();
+            message.innerHTML = `
+                YAYYYY!!! 💃🎉💖<br><br>
+                I knew it, Baku 😍<br>
+                You are my forever Valentine,<br>
+                my best friend, my love, my home 🏡❤️<br><br>
+                Happy Valentine’s Day 💕
+            `;
+            yesBtn.style.display = "none";
+            noBtn.style.display = "none";
+        });
+
+        // Floating hearts generator
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }, 300);
+    </script>
+
+</body>
+</html>
